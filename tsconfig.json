@@ -9,9 +9,13 @@
     "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
     "declaration": true,
     "outDir": "./dist",
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"]
+    }
   },
   "include": [
-    "src/**/*.ts"
+    "src"
   ],
   "exclude": ["test/*.ts", "node_modules"]
 }
