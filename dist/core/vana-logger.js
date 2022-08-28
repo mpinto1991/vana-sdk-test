@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.VanaLogger = void 0;
 const lambda_log_1 = require("lambda-log");
 const logger = new lambda_log_1.LambdaLog();
 class VanaLogger {
@@ -32,4 +33,4 @@ class VanaLogger {
         return logger.assert(test, msg, this.meta, this.tags);
     }
 }
-exports.default = VanaLogger;
+exports.VanaLogger = VanaLogger;

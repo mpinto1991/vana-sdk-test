@@ -1,7 +1,7 @@
 import { LambdaLog, LogMessage } from "lambda-log"
 const logger = new LambdaLog();
 
-class VanaLogger {
+export class VanaLogger {
     meta?: object;
     tags?: string[];
 
@@ -42,5 +42,3 @@ class VanaLogger {
         return logger.assert(test, msg, this.meta, this.tags);
     }
 }
-
-export default VanaLogger;

@@ -1,4 +1,4 @@
-import VanaLogger from "./vana-logger";
+import { VanaLogger } from "./vana-logger";
 import {sendDistributionMetric} from "datadog-lambda-js";
 const logger = new VanaLogger();
 
@@ -11,7 +11,7 @@ const metrics = {
     distribution: "d",
 };
 
-class VanaMetrics {
+export class VanaMetrics {
     metric(name: string, value: number, type: string, ...tags: string[]): void {
         try {
             sendDistributionMetric(name, value, ...tags);
@@ -46,5 +46,3 @@ class VanaMetrics {
         return this.metric(name, value, metrics.distribution, ...tags)
     }
 }
-
-export default VanaMetrics;

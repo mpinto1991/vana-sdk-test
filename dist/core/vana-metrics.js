@@ -1,11 +1,9 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const vana_logger_1 = __importDefault(require("./vana-logger"));
+exports.VanaMetrics = void 0;
+const vana_logger_1 = require("./vana-logger");
 const datadog_lambda_js_1 = require("datadog-lambda-js");
-const logger = new vana_logger_1.default();
+const logger = new vana_logger_1.VanaLogger();
 const metrics = {
     count: "c",
     gauge: "g",
@@ -44,4 +42,4 @@ class VanaMetrics {
         return this.metric(name, value, metrics.distribution, ...tags);
     }
 }
-exports.default = VanaMetrics;
+exports.VanaMetrics = VanaMetrics;

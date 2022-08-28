@@ -1,5 +1,5 @@
 import { LogMessage } from "lambda-log";
-declare class VanaLogger {
+export declare class VanaLogger {
     meta?: object;
     tags?: string[];
     constructor(meta?: object, tags?: string[]);
@@ -12,4 +12,3 @@ declare class VanaLogger {
     error(msg: string | Error): LogMessage;
     assert(test: any, msg: string): boolean | LogMessage;
 }
-export default VanaLogger;

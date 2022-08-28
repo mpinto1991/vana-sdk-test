@@ -1,2 +1,2 @@
-export { default as VanaLogger } from "./core/vana-logger"
-export { default as VanaMetrics } from "./core/vana-metrics"
+export { VanaLogger } from "./core/vana-logger"
+export { VanaMetrics } from "./core/vana-metrics"
