@@ -1,6 +1,6 @@
 import { ValidationError } from "../errors/validation-error";
 import { VanaLogger } from "../util/vana-logger"
-import { VanaEvent } from "../types/VanaEventBase";
+import { VanaEvent } from "../types/vana-event-base";
 
 let logger = new VanaLogger();
 
