@@ -11,11 +11,16 @@
     "outDir": "./dist",
     "baseUrl": "src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": [
+        "*"
+      ]
     }
   },
   "include": [
     "src"
   ],
-  "exclude": ["test/*.ts", "node_modules"]
+  "exclude": [
+    "src/tests",
+    "node_modules",
+  ]
 }
