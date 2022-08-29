@@ -22,6 +22,7 @@
   "license": "ISC",
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "@types/aws-lambda": "^8.10.102",
     "@types/chai": "^4.3.3",
     "@types/jest": "^26.0.18",
     "@types/lambda-log": "^2.2.1",
