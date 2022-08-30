@@ -3,7 +3,7 @@ name: Create a release for SDK
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 jobs:
   build:
     runs-on: ubuntu-latest
