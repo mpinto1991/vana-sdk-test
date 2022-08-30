@@ -2,9 +2,7 @@ import { ValidationError } from "../errors/validation-error";
 import { VanaEvent } from "../types/vana-event-base";
 import { VanaLogger } from "../util/vana-logger";
 
-const logger = new VanaLogger();
-
-export function extractData(event: VanaEvent): any {
+export function extractData(event: VanaEvent, logger: VanaLogger): any {
   let data;
   try {
     if (event.body != null) {
