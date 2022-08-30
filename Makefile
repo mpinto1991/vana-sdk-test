@@ -1,24 +1,5 @@
 .PHONY: install build test lint coverage
 
-EnvironmentType ?=dev
-SERVICE_OPERATION ?=gt-trans
-DATADOG_SECRET_ARN?=arn:aws:secretsmanager:us-east-1:646324814021:secret:dev/datadog-cc3wua
-
-ifeq ($(EnvironmentType), qa)
-	DATADOG_SECRET_ARN=arn:aws:secretsmanager:us-east-1:266083239478:secret:qa/datadog-y4F6E4
-endif
-
-ifeq ($(EnvironmentType), prod)
-	DATADOG_SECRET_ARN=arn:aws:secretsmanager:us-east-1:384120103923:secret:prod/datadog-J3r7gt
-endif
-
-PARAMETER_OVERRIDES=--parameter-overrides EnvironmentType=$(EnvironmentType) DataDogSecretArn=$(DATADOG_SECRET_ARN)
-S3_BUCKET=vana-deploy
-
-ifneq ($(EnvironmentType),prod)
-	S3_BUCKET=vana-deploy-$(EnvironmentType)
-endif
-
 install:
 	npm install
 
@@ -34,7 +15,10 @@ lint:
 coverage:
 	npm run coverage
 
-prettier-format:
-	npm run prettier-format
+format-check:
+	npm run format:check
+
+format-write:
+	npm run format:write
 
 all: install build lint coverage test

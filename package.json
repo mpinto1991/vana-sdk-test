@@ -8,9 +8,10 @@
     "compile": "tsc",
     "coverage": "nyc npm run test",
     "build": "tsc",
+    "format:check": "prettier .prettierrc.json 'src/**/*.ts' -c",
+    "format:write": "prettier .prettierrc.json 'src/**/*.ts' -c",
     "lint": "eslint src/*",
     "prepare": "npm run build",
-    "prettier-format": "prettier .prettierrc.json 'src/**/*.ts' -c",
     "test": "mocha -r ts-node/register src/tests/**/*.test.ts",
     "test:watch": "jest --watchAll"
   },
