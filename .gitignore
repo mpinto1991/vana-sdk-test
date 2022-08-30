@@ -46,4 +46,4 @@ yarn-error.log*
 .coverage
 coverage.xml
 
-dist/
+dist
