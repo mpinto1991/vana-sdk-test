@@ -1,4 +1,4 @@
-.PHONY: install test lint coverage build deploy
+.PHONY: install build test lint coverage
 
 EnvironmentType ?=dev
 SERVICE_OPERATION ?=gt-trans
@@ -22,6 +22,9 @@ endif
 install:
 	npm install
 
+build:
+	npm run build
+
 test:
 	npm run test
 
@@ -31,5 +34,5 @@ lint:
 coverage:
 	npm run coverage
 
-all: install lint coverage test
+all: install build lint coverage test
 
