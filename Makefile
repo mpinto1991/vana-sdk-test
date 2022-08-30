@@ -34,4 +34,7 @@ lint:
 coverage:
 	npm run coverage
 
+prettier-format:
+	npm run prettier-format
+
 all: install build lint coverage test

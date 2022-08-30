@@ -15,12 +15,13 @@
     "parserOptions": {
         "ecmaVersion": 11,
         "sourceType": "module",
-        "project": "tsconfig.json"
+        "project": "tsconfig-linter.json"
     },
     "plugins": [
         "@typescript-eslint"
     ],
     "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off",
         "indent": [
             "error",
             2
