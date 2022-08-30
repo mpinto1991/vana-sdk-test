@@ -35,4 +35,3 @@ coverage:
 	npm run coverage
 
 all: install build lint coverage test
-

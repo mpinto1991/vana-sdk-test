@@ -8,7 +8,7 @@
     "compile": "tsc",
     "coverage": "nyc npm run test",
     "build": "tsc",
-    "lint": "eslint src/**/*.ts",
+    "lint": "eslint **/*.ts",
     "prepare": "npm run build",
     "test": "mocha -r ts-node/register src/tests/**/*.test.ts",
     "test:watch": "jest --watchAll"
