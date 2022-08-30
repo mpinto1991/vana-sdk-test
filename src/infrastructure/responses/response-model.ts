@@ -1,4 +1,4 @@
 export interface ResponseModel<T> {
-    body: T;
-    statusCode: number;
+  body: T;
+  statusCode: number;
 }

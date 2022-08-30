@@ -1,6 +1,6 @@
 import { DefaultError } from "../errors/default-error";
 
 export class HeavyScraperError extends DefaultError {
-    name = "HeavyScraperError";
-    statusCode = 400;
+  name = "HeavyScraperError";
+  statusCode = 400;
 }
