@@ -5,10 +5,6 @@ repos:
             name: typescript_lint
             entry: make lint
             language: system
-        -   id: typescript_test
-            name: typescript_test
-            entry: make test
-            language: system
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.3.0
     hooks:
