@@ -1,4 +1,4 @@
-# Make sure our master branch is up to date
+# Make sure our main branch is up to date
 git checkout main
 git pull
 
@@ -32,7 +32,7 @@ echo "$newIgnore" > .gitignore # the redirect here is put into a spereate step t
 git add -A && git commit -m "[BUILD] $releaseVersion"
 
 # Make a new tag off of the latest build
-git checkout master
+git checkout main
 git tag "$releaseVersion" latest-release
 git push origin "$releaseVersion"
 git push origin latest-release
