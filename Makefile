@@ -1,7 +1,7 @@
 .PHONY: install build test lint coverage
 
 install:
-	npm install
+	npm ci
 
 build:
 	npm run build
@@ -14,11 +14,5 @@ lint:
 
 coverage:
 	npm run coverage
-
-format-check:
-	npm run format:check
-
-format-write:
-	npm run format:write
 
 all: install build lint coverage test
