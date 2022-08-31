@@ -1,4 +1,5 @@
 import { LambdaLog, LogMessage } from "lambda-log";
+
 const logger = new LambdaLog();
 
 export class VanaLogger {
