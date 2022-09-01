@@ -1,0 +1,40 @@
+name: ci-validate
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+
+      - name: Install dependencies and test
+        run: |
+          make install
+          make test
+
+      - name: Run Lint
+        run: |
+          make install
+          make lint
+
+      - name: Download Codecov binary
+        run: |
+          curl -Os https://uploader.codecov.io/latest/linux/codecov
+          chmod +x codecov
+
+      - name: Report coverage
+        run: |
+          make install
+          make coverage
+
+      - name: Upload coverage report
+        run: |
+          ./codecov -t ${{ secrets.CODECOV_TOKEN }} -F default -f .nyc_output/*.json

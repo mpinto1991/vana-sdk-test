@@ -1,0 +1,54 @@
+name: Generate and push tag
+env:
+  CI: true
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "!*"
+jobs:
+  release:
+    name: Generate vana nodejs sdk tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+          registry-url: "https://npm.pkg.github.com"
+
+      - name: install
+        run: npm install
+
+      - name: test
+        run: npm test
+
+      - name: Set diff list
+        id: diff_list
+        env:
+          SHA_AFTER: ${{ github.event.after }}
+          SHA_BEFORE: ${{ github.event.before }}
+        run: |
+          DIFFARR=()
+          if [[ $(git diff $SHA_BEFORE..$SHA_AFTER -- package.json) ]]; then DIFFARR+=("\"package.json\""); fi
+          IFS=,; echo "::set-output name=DIFF::[${DIFFARR[*]}]"
+
+      - name: package-version
+        if: contains(fromJSON(steps.diff_list.outputs.DIFF), 'package.json')
+        run: node -p -e '`PACKAGE_VERSION=${require("./package.json").version}`' >> $GITHUB_ENV
+
+      - name: package-version-to-git-tag
+        if: contains(fromJSON(steps.diff_list.outputs.DIFF), 'package.json')
+        uses: pkgdeps/git-tag-action@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_repo: ${{ github.repository }}
+          version: ${{ env.PACKAGE_VERSION }}
+          git_commit_sha: ${{ github.sha }}
+          git_tag_prefix: "v"
