@@ -17,6 +17,7 @@
     }
   },
   "include": [
+    "jest.config.js",
     "src/**/*"
   ],
   "exclude": [
