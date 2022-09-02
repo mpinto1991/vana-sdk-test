@@ -3,43 +3,28 @@ import { LambdaLog, LogMessage } from "lambda-log";
 const logger = new LambdaLog();
 
 export class VanaLogger {
-  meta?: object;
-  tags?: string[];
 
-  constructor(meta?: object, tags?: string[]) {
-    this.meta = meta;
-    this.tags = tags;
+  info(msg: string, meta?: object, tags?: string[]): LogMessage {
+    return logger.info(msg, meta, tags);
   }
 
-  setMeta(meta?: object): void {
-    this.meta = meta;
+  warning(msg: string, meta?: object, tags?: string[]): LogMessage {
+    return logger.warn(msg, meta, tags);
   }
 
-  setTags(tags?: string[]): void {
-    this.tags = tags;
+  debug(msg: string, meta?: object, tags?: string[]): LogMessage {
+    return logger.debug(msg, meta, tags);
   }
 
-  info(msg: string): LogMessage {
-    return logger.info(msg, this.meta, this.tags);
+  exception(msg: string | Error, meta?: object, tags?: string[]): LogMessage {
+    return logger.error(msg, meta, tags);
   }
 
-  warning(msg: string): LogMessage {
-    return logger.warn(msg, this.meta, this.tags);
+  error(msg: string | Error, meta?: object, tags?: string[]): LogMessage {
+    return logger.error(msg, meta, tags);
   }
 
-  debug(msg: string): LogMessage {
-    return logger.debug(msg, this.meta, this.tags);
-  }
-
-  exception(msg: string | Error): LogMessage {
-    return logger.error(msg, this.meta, this.tags);
-  }
-
-  error(msg: string | Error): LogMessage {
-    return logger.error(msg, this.meta, this.tags);
-  }
-
-  assert(test: any, msg: string): boolean | LogMessage {
-    return logger.assert(test, msg, this.meta, this.tags);
+  assert(test: any, msg: string, meta?: object, tags?: string[]): boolean | LogMessage {
+    return logger.assert(test, msg, meta, tags);
   }
 }
