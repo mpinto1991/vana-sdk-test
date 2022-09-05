@@ -1,4 +1,6 @@
 # Vana Node SDK
+[![ci-validate](https://github.com/vana-tech/vana-nodejs-sdk/actions/workflows/ci-validate.yml/badge.svg)](https://github.com/vana-tech/vana-nodejs-sdk/actions/workflows/ci-validate.yml)
+[![codecov](https://codecov.io/gh/vana-tech/vana-nodejs-sdk/branch/dev/graph/badge.svg?token=DDkLNul6U0)](https://codecov.io/gh/vana-tech/vana-nodejs-sdk)
 
 **Common libraries and tools for vana backend services.**
 
