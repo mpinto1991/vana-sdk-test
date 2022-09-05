@@ -12,39 +12,38 @@ const metrics = {
 };
 
 export class VanaMetrics {
-  metric(name: string, value: number, type: string, ...tags: string[]): void {
+  metric(name: string, value: number, type: string, meta?: object, ...tags: string[]): void {
     try {
       sendDistributionMetric(name, value, ...tags);
     } catch (ex) {
       logger.warning(
         "Import error, lambda_metric datadog not available. Using normal logger to send metric."
       );
-      logger.setTags(tags);
-      logger.info(`${name}:${value}|${type}`);
+      logger.info(`${name}:${value}|${type}`, meta, tags);
     }
   }
 
-  count(name: string, value: number, ...tags: string[]): void {
-    return this.metric(name, value, metrics.count, ...tags);
+  count(name: string, value: number, meta: object, ...tags: string[]): void {
+    return this.metric(name, value, metrics.count, meta, ...tags);
   }
 
-  gauge(name: string, value: number, ...tags: string[]): void {
-    return this.metric(name, value, metrics.gauge, ...tags);
+  gauge(name: string, value: number, meta: object, ...tags: string[]): void {
+    return this.metric(name, value, metrics.gauge, meta, ...tags);
   }
 
-  rate(name: string, value: number, ...tags: string[]): void {
-    return this.metric(name, value, metrics.rate, ...tags);
+  rate(name: string, value: number, meta: object, ...tags: string[]): void {
+    return this.metric(name, value, metrics.rate, meta, ...tags);
   }
 
-  histogram(name: string, value: number, ...tags: string[]): void {
-    return this.metric(name, value, metrics.histogram, ...tags);
+  histogram(name: string, value: number, meta: object, ...tags: string[]): void {
+    return this.metric(name, value, metrics.histogram, meta, ...tags);
   }
 
-  set(name: string, value: number, ...tags: string[]): void {
-    return this.metric(name, value, metrics.set, ...tags);
+  set(name: string, value: number, meta: object, ...tags: string[]): void {
+    return this.metric(name, value, metrics.set, meta, ...tags);
   }
 
-  distribution(name: string, value: number, ...tags: string[]): void {
-    return this.metric(name, value, metrics.distribution, ...tags);
+  distribution(name: string, value: number, meta: object, ...tags: string[]): void {
+    return this.metric(name, value, metrics.distribution, meta, ...tags);
   }
 }
